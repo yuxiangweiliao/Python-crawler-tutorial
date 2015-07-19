@@ -307,13 +307,13 @@ Out[5]: [u'Computers', u'Programming', u'Languages', u'Python']
 
 ![](images/41.png)
 
-我们可以用如下代码来抓取这个<li>标签：
+我们可以用如下代码来抓取这个<li\>标签：
 
 ```
 sel.xpath('//ul/li')  
 ```
 
-从<li>标签中，可以这样获取网站的描述：
+从<li\>标签中，可以这样获取网站的描述：
 
 ```
 sel.xpath('//ul/li/text()').extract()  
