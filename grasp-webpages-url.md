@@ -1,6 +1,6 @@
 # 抓取网页的含义和 URL 基本构成
 
-## 一、网络爬虫的定义
+## 网络爬虫的定义
 
 网络爬虫，即 Web Spider，是一个很形象的名字。
 
@@ -21,7 +21,7 @@
 
 我们先从 UR L开始。
 
-## 二、浏览网页的过程
+## 浏览网页的过程
 
 抓取网页的过程其实和读者平时使用IE浏览器浏览网页的道理是一样的。
 比如说你在浏览器的地址栏中输入 www.baidu.com 这个地址。
@@ -32,12 +32,13 @@ HTML 是一种标记语言，用标签标记内容并加以解析和区分。
 
 浏览器的功能是将获取到的 HTML 代码进行解析，然后将原始的代码转变成我们直接看到的网站页面。
 
-## 三、URI 和 URL 的概念和举例
-简单的来讲，URL 就是在浏览器端输入的 http://www.baidu.com    这个字符串。
+## URI 和 URL 的概念和举例
+
+简单的来讲，URL 就是在浏览器端输入的 wiki.jikexueyuan.com 这个字符串。
 
 在理解 URL 之前，首先要理解 URI 的概念。
 
-什么是URI？
+什么是 URI？
 
 Web 上每种可用的资源，如 HTML 文档、图像、视频片段、程序等都由一个通用资源标志符(Universal Resource Identifier，URI)进行定位。
  
@@ -51,17 +52,17 @@ URI 通常由三部分组成：
 
 如下面的 URI：
 
-http://www.why.com.cn/myhtml/html1223/
+`http://www.why.com.cn/myhtml/html1223/`
 
 我们可以这样解释它：
 
-①这是一个可以通过HTTP协议访问的资源，
+①这是一个可以通过 HTTP 协议访问的资源，
 
-②位于主机 www.webmonkey.com.cn 上，
+②位于主机 `www.webmonkey.com.cn` 上，
 
 ③通过路径“/html/html40”访问。 
 
-## 四、URL 的理解和举例
+## URL 的理解和举例
 
 URL 是 URI 的一个子集。它是 Uniform Resource Locator 的缩写，译为“统一资源定位 符”。
 
@@ -87,7 +88,7 @@ URL 的格式由三部分组成：
 
 第一部分和第二部分是不可缺少的，第三部分有时可以省略。 
 
-## 五、URL和URI简单比较
+## URL 和 URI 简单比较
 
 URI 属于 URL 更低层次的抽象，一种字符串文本标准。
 
@@ -108,16 +109,17 @@ URL 的定义是：统一资源定位符。
 
 使用超级文本传输协议 HTTP，提供超级文本信息服务的资源。 
 
-例：http://www.peopledaily.com.cn/channel/welcome.htm   
-其计算机域名为 www.peopledaily.com.cn。
+例：`http://www.peopledaily.com.cn/channel/welcome.htm`
+  
+其计算机域名为 `www.peopledaily.com.cn`。
 
 超级文本文件(文件类型为.html)是在目录 /channel 下的 welcome.htm。  
 这是中国人民日报的一台计算机。 
 
-例：http://www.rol.cn.net/talk/talk1.htm   
-其计算机域名为www.rol.cn.net。
+例：`http://www.rol.cn.net/talk/talk1.htm`  
+其计算机域名为 `www.rol.cn.net`。
 
-超级文本文件(文件类型为.html)是在目录/talk下的 talk1.htm。
+超级文本文件(文件类型为.html)是在目录 /talk 下的 talk1.htm。
 这是瑞得聊天室的地址，可由此进入瑞得聊天室的第 1 室。
 
 2. 文件的 URL
@@ -126,17 +128,17 @@ URL 的定义是：统一资源定位符。
 
 有时可以省略目录和文件名，但“/”符号不能省略。 
 
-例：file://ftp.yoyodyne.com/pub/files/foobar.txt 
+例：`file://ftp.yoyodyne.com/pub/files/foobar.txt` 
 
-上面这个 URL 代表存放在主机 ftp.yoyodyne.com 上的 pub/files/目录下的一个文件，文件名是foobar.txt。
+上面这个 URL 代表存放在主机 `ftp.yoyodyne.com` 上的 pub/files/目录下的一个文件，文件名是foobar.txt。
 
-例：file://ftp.yoyodyne.com/pub 
+例：`file://ftp.yoyodyne.com/pub` 
 
-代表主机 ftp.yoyodyne.com 上的目录/pub。 
+代表主机 `ftp.yoyodyne.com` 上的目录/pub。 
 
-例：file://ftp.yoyodyne.com/ 
+例：`file://ftp.yoyodyne.com/` 
 
-代表主机 ftp.yoyodyne.com 的根目录。 
+代表主机 `ftp.yoyodyne.com` 的根目录。 
 
 爬虫最主要的处理对象就是 URL，它根据 URL 地址取得所需要的文件内容，然后对它进行进一步的处理。
 
