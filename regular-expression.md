@@ -1,12 +1,11 @@
 # Python 中的正则表达式教程
 
-接下来准备用糗百做一个爬虫的小例子。
-但是在这之前，先详细的整理一下 Python 中的正则表达式的相关内容。
+接下来准备用糗百做一个爬虫的小例子。但是在这之前，先详细的整理一下 Python 中的正则表达式的相关内容。
 正则表达式在 Python 爬虫中的作用就像是老师点名时用的花名册一样，是必不可少的神兵利器。
 
-## 一、 正则表达式基础 
+## 正则表达式基础 
 
-### 1.1.概念介绍
+### 概念介绍
 
 正则表达式是用于处理字符串的强大工具，它并不是 Python 的一部分。
 其他编程语言中也有正则表达式的概念，区别只在于不同的编程语言实现支持的语法数量不同。
@@ -26,16 +25,13 @@
 
 ![](images/7.png)
 
-### 1.2. 数量词的贪婪模式与非贪婪模式
+### 数量词的贪婪模式与非贪婪模式
 
-正则表达式通常用于在文本中查找匹配的字符串。  
-贪婪模式，总是尝试匹配尽可能多的字符；  
-非贪婪模式则相反，总是尝试匹配尽可能少的字符。  
-Python 里数量词默认是贪婪的。  
-例如：正则表达式"ab\*"如果用于查找"abbbc"，将找到"abbb"。  
-而如果使用非贪婪的数量词"ab\*?"，将找到"a"。  
+正则表达式通常用于在文本中查找匹配的字符串。  贪婪模式，总是尝试匹配尽可能多的字符；非贪婪模式则相反，总是尝试匹配尽可能少的字符。Python 里数量词默认是贪婪的。 
+ 
+例如：正则表达式 `ab\*` 如果用于查找`abbbc`，将找到`abbb`。而如果使用非贪婪的数量词 `ab\*?`，将找到"a"。  
 
-### 1.3. 反斜杠的问题
+###  反斜杠的问题
 
 与大多数编程语言相同，正则表达式里使用"\"作为转义字符，这就可能造成反斜杠困扰。
 假如你需要匹配文本中的字符"\"，那么使用编程语言表示的正则表达式里将需要 4 个反斜杠"\\\\"：
@@ -47,17 +43,17 @@ Python 里的原生字符串很好地解决了这个问题，这个例子中的�
 同样，匹配一个数字的"\\d"可以写成r"\d"。
 有了原生字符串，妈妈再也不用担心我的反斜杠问题~
 
-## 二、 介绍re模块
+## 介绍 re 模块
 
-### 2.1.  Compile
+### Compile
 
 Python 通过 re 模块提供对正则表达式的支持。使用 re 的一般步骤是：
 
-Step1：先将正则表达式的字符串形式编译为Pattern实例。  
+- Step1：先将正则表达式的字符串形式编译为Pattern实例。  
 
-Step2：然后使用Pattern实例处理文本并获得匹配结果（一个Match实例）。
+- Step2：然后使用Pattern实例处理文本并获得匹配结果（一个Match实例）。
 
-Step3：最后使用Match实例获得信息，进行其他的操作。
+- Step3：最后使用Match实例获得信息，进行其他的操作。
 
 我们新建一个 re01.py 来试验一下 re 的应用：
 
@@ -167,10 +163,8 @@ else:
     print u'match22不是小数'  
 ```
 
-re 提供了众多模块方法用于完成正则表达式的功能。
-这些方法可以使用 Pattern 实例的相应方法替代，唯一的好处是少写一行 re.compile()代码，
-但同时也无法复用编译后的 Pattern 对象。
-这些方法将在 Pattern 类的实例方法部分一起介绍。
+re 提供了众多模块方法用于完成正则表达式的功能。这些方法可以使用 Pattern 实例的相应方法替代，唯一的好处是少写一行 re.compile()代码，但同时也无法复用编译后的 Pattern 对象。这些方法将在 Pattern 类的实例方法部分一起介绍。
+
 如一开始的 hello 实例可以简写为：
 
 ```
@@ -182,24 +176,22 @@ m = re.match(r'hello', 'hello world!')
 print m.group()  
 ```
 
-re 模块还提供了一个方法 escape(string)，用于将 string 中的正则表达式元字符如*/+/?等之前加上转义符再返回
+re 模块还提供了一个方法 escape(string)，用于将 string 中的正则表达式元字符如 `*/+/?`等之前加上转义符再返回
 
-### 2.2. Match
+### Match
 
 Match 对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用 Match 提供的可读属性或方法来获取这些信息。
 
 **属性**：
 
-
 - string: 匹配时使用的文本。
-- re: 匹配时使用的Pattern对象。
-- pos: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。
-- endpos: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。
-- lastindex: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None
-- lastgroup: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。
+- re: 匹配时使用的 Pattern 对象。
+- pos: 文本中正则表达式开始搜索的索引。值与 Pattern.match() 和 Pattern.seach() 方法的同名参数相同。
+- endpos: 文本中正则表达式结束搜索的索引。值与 Pattern.match() 和Pattern.seach() 方法的同名参数相同。
+- lastindex: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为 None
+- lastgroup: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为 None。
 
 **方法**：
-
 
 1. group([group1, …])：  
 	获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1 可以使用编号也可以使用别名；编号 0 代表整个匹配的子串；不填写参数时，返回 group(0)；没有截获字符串的组返回 None；截获了多次的组返回最后一次截获的子串。
@@ -258,7 +250,7 @@ print r"m.expand(r'\g<2> \g<1>\g<3>'):", m.expand(r'\2 \1\3')
 # m.expand(r'\2 \1\3'): world hello!  
 ```
 
-### 2.3. Pattern
+### Pattern
 
 Pattern 对象是一个编译好的正则表达式，通过 Pattern 提供的一系列方法可以对文本进行匹配查找。
 Pattern 不能直接实例化，必须使用 re.compile()进行构造，也就是 re.compile()返回的对象。
@@ -292,14 +284,15 @@ print "p.groupindex:", p.groupindex
 
 下面重点介绍一下 pattern 的实例方法及其使用。
 
-#### 1.match
+#### match
 
+```
 match(string[, pos[, endpos]]) | re.match(pattern, string[, flags])：
+```
 
-这个方法将从 string 的 pos 下标处起尝试匹配 pattern；如果 pattern 结束时仍可匹配，则返回一个 Match 对象；如果匹配过程中 pattern 无法匹配，或者匹配未结束就已到达 endpos，则返回 None。pos 和 endpos 的默认值分别为 0 和 len(string)；re.match()无法指定这两个参数，参数 flags用于编译 pattern时指定匹配模式。
+这个方法将从 string 的 pos 下标处起尝试匹配 pattern；如果 pattern 结束时仍可匹配，则返回一个 Match 对象；如果匹配过程中 pattern 无法匹配，或者匹配未结束就已到达 endpos，则返回 None。pos 和 endpos 的默认值分别为 0 和 len(string)；re.match()无法指定这两个参数，参数 flags 用于编译 pattern时指定匹配模式。
 
-注意：这个方法并不是完全匹配。
-当 pattern 结束时若 string 还有剩余字符，仍然视为成功。
+注意：这个方法并不是完全匹配。当 pattern 结束时若 string 还有剩余字符，仍然视为成功。
 想要完全匹配，可以在表达式末尾加上边界匹配符'$'。
 
 下面来看一个 Match 的简单案例：
@@ -322,38 +315,45 @@ if match:
 # hello  
 ```
 
-#### 2.search
+#### search
 
+```
 search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]): 
-这个方法用于查找字符串中可以匹配成功的子串。
-从 string 的 pos 下标处起尝试匹配 pattern，
-如果 pattern 结束时仍可匹配，则返回一个 Match 对象；
-若无法匹配，则将 pos 加 1 后重新尝试匹配；
-直到 pos=endpos 时仍无法匹配则返回 None。
-pos 和 endpos 的默认值分别为 0 和 len(string))；
-re.search()无法指定这两个参数，参数 flags 用于编译 pattern 时指定匹配模式。
-那么它和 match 有什么区别呢？
-match()函数只检测 re 是不是在 string 的开始位置匹配，
-search()会扫描整个 string 查找匹配，
+```
 
-match（）只有在 0 位置匹配成功的话才有返回，如果不是开始位置匹配成功的话，match()就返回none。
+这个方法用于查找字符串中可以匹配成功的子串。从 string 的 pos 下标处起尝试匹配 pattern，如果 pattern 结束时仍可匹配，则返回一个 Match 对象；若无法匹配，则将 pos 加 1 后重新尝试匹配；直到 pos=endpos 时仍无法匹配则返回 None。pos 和 endpos 的默认值分别为 0 和 len(string))；
+re.search()无法指定这两个参数，参数 flags 用于编译 pattern 时指定匹配模式。那么它和 match 有什么区别呢？match()函数只检测 re 是不是在 string 的开始位置匹配，search()会扫描整个 string 查找匹配，
+
+match（）只有在 0 位置匹配成功的话才有返回，如果不是开始位置匹配成功的话，match() 就返回 none。
 
 例如：
 
-print(re.match(‘super’, ‘superstition’).span())  
+```
+print(re.match(‘super’, ‘superstition’).span()) 
+```
+ 
 会返回(0, 5)
 
+```
 print(re.match(‘super’, ‘insuperable’))  
-则返回None
+```
+
+则返回 None
 
 search()会扫描整个字符串并返回第一个成功的匹配
 
 例如：
 
-print(re.search(‘super’, ‘superstition’).span())  
+```
+print(re.search(‘super’, ‘superstition’).span())
+```
+  
 返回(0, 5)
 
+```
 print(re.search(‘super’, ‘insuperable’).span())  
+```
+
 返回(2, 7)
 
 看一个 search 的实例：
@@ -379,11 +379,13 @@ if match:
 # world  
 ```
 
-#### 3.split
+#### split
 
+```
 split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]):  
-按照能够匹配的子串将 string 分割后返回列表。
-maxsplit 用于指定最大分割次数，不指定将全部分割。
+```
+
+按照能够匹配的子串将 string 分割后返回列表。maxsplit 用于指定最大分割次数，不指定将全部分割。
 
 ```
 import re  
@@ -395,9 +397,12 @@ print p.split('one1two2three3four4')
 # ['one', 'two', 'three', 'four', '']  
 ```
 
-#### 4.findall
+#### findall
 
-findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]):  
+```
+findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]):
+```
+  
 搜索 string，以列表形式返回全部能匹配的子串。
 
 ```
@@ -410,9 +415,12 @@ print p.findall('one1two2three3four4')
 # ['1', '2', '3', '4']  
 ```
 
-#### 5.finditer
+#### finditer
 
+```
 finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]):  
+```
+
 搜索 string，返回一个顺序访问每一个匹配结果（Match 对象）的迭代器。
 
 ```
@@ -426,13 +434,13 @@ for m in p.finditer('one1two2three3four4'):
 # 1 2 3 4  
 ```
 
-#### 6.sub
+#### sub
 
-sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]):  
-使用 repl 替换 string 中每一个匹配的子串后返回替换后的字符串。 
-当 repl 是一个字符串时，可以使用\id 或\g<id>、\g<name>引用分组，但不能使用编号 0。 
-当 repl 是一个方法时，这个方法应当只接受一个参数（Match 对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。 
-count 用于指定最多替换次数，不指定时全部替换。
+```
+sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]): 
+```
+ 
+使用 repl 替换 string 中每一个匹配的子串后返回替换后的字符串。 当 repl 是一个字符串时，可以使用\id 或\g<id>、\g<name>引用分组，但不能使用编号 0。 当 repl 是一个方法时，这个方法应当只接受一个参数（Match 对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。count 用于指定最多替换次数，不指定时全部替换。
 
 ```
 import re  
@@ -452,9 +460,12 @@ print p.sub(func, s)
 # I Say, Hello World!  
 ```
 
-#### 7.subn
+#### subn
 
-subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]):  
+```
+subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]):
+```
+  
 返回 (sub(repl, string[, count])，替换次数)。
 
 ```
